@@ -116,8 +116,9 @@ for ( let i = 0; i<bottoneMiPiace.length; i++){
         const postid = this.getAttribute('data-postid');
 
         const contatoreLike = document.getElementById('Like-counter-' + postid);
-        contatoreLike.innerText = pareseInt(contatoreLike.innerText) +1;
+        contatoreLike.innerText = parseInt(contatoreLike.innerText) +1;
         ArrayMiPiace.push(postid);
+        console.log(ArrayMiPiace)
 });
 }
 
