@@ -69,6 +69,7 @@ for ( let i=0; i<posts.length; i++){
     console.log(posts[i].created);
     let immagineAutore = posts[i].author.image;
     let nomeAutore=posts[i].author.name;
+    let ArrayMiPiace=[];
     
 
     container.innerHTML += 
@@ -97,7 +98,7 @@ for ( let i=0; i<posts.length; i++){
                                 </a>
                             </div>
                             <div class="likes__counter">
-                                Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
+                                Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">${posts[i].likes}</b> persone
                             </div>
                         </div> 
                     </div>            
@@ -106,16 +107,17 @@ for ( let i=0; i<posts.length; i++){
 }
 
 const bottoneMiPiace = document.getElementsByClassName('js-like-button');
-
+console.log(bottoneMiPiace)
 for ( let i = 0; i<bottoneMiPiace.length; i++){
-    bottoneMiPiace[i].addEventListener('Click',function(event){
+        bottoneMiPiace[i].addEventListener('click', function(event){
         event.preventDefault();
+        console.log('ggg')
         this.classList.add('like-button--liked');
         const postid = this.getAttribute('data-postid');
 
-        const contatoreLike= document.getElementById('Like-counter-' + postid);
-        contatoreLike.innerText += 1;
-    
+        const contatoreLike = document.getElementById('Like-counter-' + postid);
+        contatoreLike.innerText = pareseInt(contatoreLike.innerText) +1;
+        ArrayMiPiace.push(postid);
 });
 }
 
